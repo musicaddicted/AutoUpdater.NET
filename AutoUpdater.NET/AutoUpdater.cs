@@ -609,8 +609,9 @@ namespace AutoUpdaterDotNET
             {
                 return downloadDialog.ShowDialog().Equals(DialogResult.OK);
             }
-            catch (TargetInvocationException)
+            catch (TargetInvocationException exception)
             {
+
             }
             return false;
         }
