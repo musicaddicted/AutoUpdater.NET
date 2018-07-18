@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -19,6 +20,8 @@ namespace AutoUpdaterDotNET
             buttonSkip.Visible = AutoUpdater.ShowSkipButton;
             buttonRemindLater.Visible = AutoUpdater.ShowRemindLaterButton;
             var resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateForm));
+            //CultureInfo originalCulture = CultureInfo.CurrentCulture;
+            //Thread.CurrentThread.CurrentCulture = new CultureInfo("ru-RU");
             Text = string.Format(resources.GetString("$this.Text", CultureInfo.CurrentCulture),
                 AutoUpdater.AppTitle, AutoUpdater.CurrentVersion);
             labelUpdate.Text = string.Format(resources.GetString("labelUpdate.Text", CultureInfo.CurrentCulture),
