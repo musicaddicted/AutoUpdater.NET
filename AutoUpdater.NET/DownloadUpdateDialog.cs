@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
@@ -181,6 +181,15 @@ namespace AutoUpdaterDotNET
                     var args = AutoUpdater.InstallerArgs.Split(' ');
                     processStartInfo.Arguments += " " + string.Join(" ", args);
                 }
+            }
+            else if (extension.Equals(".exe", StringComparison.OrdinalIgnoreCase))
+            {
+                processStartInfo = new ProcessStartInfo
+                {
+                    FileName = tempPath,
+                    UseShellExecute = false,
+                    Arguments = "/SILENT"
+                };
             }
 
             if (AutoUpdater.RunUpdateAsAdmin)
